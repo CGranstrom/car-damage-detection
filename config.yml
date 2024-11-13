@@ -1,0 +1,26 @@
+global:
+  batch_size: 32
+  rng_seed: 33
+  model_architecture: "resnet18"
+  run_name: "my run"
+  test_data_dir: "car_damage/test"
+
+data_preprocessing:
+  # dirs are relative to data/datasets
+  train_val_data_dir: "car_damage/train"
+  validation_split: 0.2
+
+training:
+  num_epochs: 50
+  pretrained_weights: "ResNet18_Weights.IMAGENET1K_V1"
+  loss_criterion: "BCELoss"
+  optimizer: "Adam"
+  learning_rate: 0.001
+  betas: [0.9, 0.999]
+  eps: 1.0e-08
+  weight_decay: 0.01
+  scheduler_step_size: 40
+  scheduler_gamma: 0.1
+
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1_score"]
